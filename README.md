@@ -9,3 +9,5 @@ Make sure to install the required Python packages before running the project:
 
 ```bash
 pip install pandas numpy scikit-learn streamlit matplotlib
+
+## How to run the project
