@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 11 03:41:03 2024
-
-@author: singh
-"""
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
