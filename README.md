@@ -61,7 +61,9 @@ Here are the commands as used during the setup:
 
 ## Credit and What I learned:
 This project was developed with the guidance of OpenAI's ChatGPT, which provided educational insights into the process of training and evaluating a machine learning model. The assistance helped me better understand the following aspects:
+
 **Training the Model**: Gained a deeper understanding of using a Random Forest model for predicting race outcomes based on features like starting grid position, laps, and pit stops.
+
 **Data Preprocessing**: Learned how to clean and prepare data for machine learning, including handling missing values and creating new features like position change.
 
 This collaboration was purely from an educational standpoint, helping me grasp key concepts in data analysis and machine learning
