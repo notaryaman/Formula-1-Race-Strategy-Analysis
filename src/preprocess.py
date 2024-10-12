@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Oct 11 03:40:27 2024
-
-@author: singh
-"""
-
 import pandas as pd
 
 def clean_race_data(df):
