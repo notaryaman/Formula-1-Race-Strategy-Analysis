@@ -1,0 +1,54 @@
+import requests
+import pandas as pd
+import os
+
+def fetch_race_data(season, round_number):
+    url = f"https://ergast.com/api/f1/{season}/{round_number}/results.json"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Failed to retrieve data for {season} round {round_number}")
+        return None
+
+def extract_race_results(data):
+    race_data = []
+    if data and data['MRData']['RaceTable']['Races']:
+        race_name = data['MRData']['RaceTable']['Races'][0]['raceName']
+        for result in data['MRData']['RaceTable']['Races'][0]['Results']:
+            race_data.append({
+                'driver': result['Driver']['familyName'],
+                'constructor': result['Constructor']['name'],
+                'grid': int(result['grid']),
+                'position': int(result['position']),
+                'status': result['status'],
+                'laps': int(result['laps']),
+                'time': result['Time']['time'] if 'Time' in result else None
+            })
+        return pd.DataFrame(race_data), race_name
+    else:
+        print("No race data found.")
+        return pd.DataFrame(), None
+
+def save_to_csv(df, season, round_number):
+    output_dir = "data"
+    os.makedirs(output_dir, exist_ok=True)
+    file_path = os.path.join(output_dir, f"race_data_{season}_round_{round_number}.csv")
+    df.to_csv(file_path, index=False)
+    print(f"Data saved to {file_path}")
+
+if __name__ == "__main__":
+    # Example: Fetch race data for the 2023 season, round 1
+    season = 2021
+    round_number = 22
+
+    print(f"Fetching data for season {season}, round {round_number}...")
+    data = fetch_race_data(season, round_number)
+    race_results, race_name = extract_race_results(data)
+
+    if not race_results.empty:
+        print(f"\nRace: {race_name}")
+        print(race_results.head())  # Print the first few rows to verify the data
+        save_to_csv(race_results, season, round_number)
+    else:
+        print("No race results to display.")
