@@ -13,18 +13,18 @@ pip install pandas numpy scikit-learn streamlit matplotlib
 ```
 ## How to run the project
 ### Step 1: Fetch Race Data
-Run ```bash fetch_data.py``` to download raw race data
+Run ```fetch_data.py``` to download raw race data
 ```bash
 python C:/Users/singh/src/fetch_data.py
 ```
 
 ### Step 2: Preprocess the Data
-Run ```bash preprocess.py``` to clean the raw data:
+Run ```preprocess.py``` to clean the raw data:
 ```bash
 python C:/Users/singh/src/preprocess.py
 ```
 ### Step 3: Train the Model
-Train the machine learning model using ```bashmodel.py```:
+Train the machine learning model using ```model.py```:
 ```bash
 python C:/Users/singh/src/model.py
 ```
